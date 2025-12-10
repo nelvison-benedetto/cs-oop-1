@@ -9,15 +9,13 @@ namespace cs_oop_1
         public string Model { get; private set; }
         public int BatteryLevel { get; private set; }
 
-        // Costruttore principale
+        //costruttori
         public ElectricCar(string model) : base()  // chiama il costruttore protected della base
         {
             Model = model;
             BatteryLevel = 100;
             Console.WriteLine($"ElectricCar {Model} created with full battery.");
-        }
-
-        // Costruttore secondario
+        }        
         public ElectricCar(string model, int batteryLevel) : base()  // chiama sempre base
         {
             Model = model;
@@ -50,7 +48,7 @@ namespace cs_oop_1
             Console.WriteLine($"{Model} is starting silently.");
             OnStart?.Invoke();  // evento opzionale
         }
-
+        
         public override string ToString()
         {
             return $"ElectricCar {Model}, Battery: {BatteryLevel}%";
