@@ -11,7 +11,7 @@ namespace cs_oop_1
         public abstract string getGPSPosition();
 
         int myProperty { get; }  //property readonly (non c'è 'set;')
-        public void stop() {   //'default', ma se scrivi esplicitamente 'default' da error, cmnq ok 
+        public void stop() {   //'default', ma se scrivi esplicitamente 'default' da error, cmnq ok , ovveride opzionale
             Console.WriteLine("Vehicle stopping...");
         }
         public static void printInfoInterface()   //static
