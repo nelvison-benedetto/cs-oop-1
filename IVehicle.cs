@@ -18,5 +18,11 @@ namespace cs_oop_1
         {
             Console.WriteLine("This is Vehicle interface.");  //call with IVehicle.printInfoInterface();
         }
+        private void myPrivateMethod(string mex)  //private
+        {
+            Console.WriteLine(mex);
+        }
+        event Action OnStart;  //event
+
     }
 }
