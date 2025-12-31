@@ -6,17 +6,18 @@ namespace cs_oop_1
 {
     public class ElectricCar : AbstractCar
     {
-        public string Model { get; private set; }
+        public string Model { get; }
         public int BatteryLevel { get; private set; }
 
         //costruttori
-        public ElectricCar(string model) : base()  // chiama il costruttore protected della base
-        {
-            Model = model;
-            BatteryLevel = 100;
-            Console.WriteLine($"ElectricCar {Model} created with full battery.");
-        }        
-        public ElectricCar(string model, int batteryLevel) : base()  // chiama sempre base
+
+        //public ElectricCar(string model) : base()  // chiama il costruttore protected della base
+        //{
+        //    Model = model;
+        //    BatteryLevel = 100;
+        //    Console.WriteLine($"ElectricCar {Model} created with full battery.");
+        //}        
+        public ElectricCar(int id, string model, int batteryLevel = 100 ) : base(id)  // chiama sempre base
         {
             Model = model;
             BatteryLevel = batteryLevel;
@@ -34,6 +35,11 @@ namespace cs_oop_1
             BatteryLevel = 100;
             Console.WriteLine($"{Model} recharged to {BatteryLevel}%.");
         }
+        public override string GetGpsPosition()
+        {
+            var pos = new GpsPosition(45.46, 9.18);
+            return pos.ToString();
+        }
 
         // Override di un metodo concreto della base se fosse virtual
         // Notiamo che ParkCar non era virtual in AbstractCar, ma possiamo farlo virtual se vogliamo
@@ -43,16 +49,19 @@ namespace cs_oop_1
         }
 
         // Override opzionale di start della interface se vogliamo comportamento specifico
-        public new void start()
+        public new void Start()
         {
-            Console.WriteLine($"{Model} is starting silently.");
-            OnStart?.Invoke();  // evento opzionale
+            Console.WriteLine($"{Model} starting silently...");
+            base.Start(); // evento + comportamento base
         }
         
+
         public override string ToString()
         {
-            return $"ElectricCar {Model}, Battery: {BatteryLevel}%";
+            return $"ElectricCar {Model} | Battery {BatteryLevel}% | Id {VehicleId}";
         }
+
+
     }
 
 }
